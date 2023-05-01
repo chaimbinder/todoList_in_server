@@ -1,5 +1,5 @@
 let { Router } = require('express')
-let  {addTask, getAll, getByID } = require('../BL/taskBL')
+let  {deleteTask,addTask, getAll, getByID } = require('../BL/taskBL')
 
 
 let router = Router()
@@ -16,6 +16,9 @@ router.post('/createTask', async (req, res) => {
   res.status(200).json(await addTask(req.body))
 })
 
+router.post('/deleteTask', async (req, res) => {
+  res.status(200).json(await deleteTask(req.body.id))
+})
 
 
 module.exports = router

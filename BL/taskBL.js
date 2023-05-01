@@ -1,4 +1,4 @@
-let { createTask, findById, findAll } = require('../DEL/taskModel.js')
+let {deleteTaskById ,createTask, findById, findAll } = require('../DEL/taskModel.js')
 
 async function getAll() {
   return await findAll()
@@ -16,4 +16,8 @@ let temp = [];
   return await createTask(temp);
 }
 
-module.exports = { addTask,getAll, getByID }
+async function deleteTask(id) {
+  return await deleteTaskById(id)
+}
+
+module.exports = {deleteTask, addTask,getAll, getByID }

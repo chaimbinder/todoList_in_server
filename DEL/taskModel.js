@@ -19,8 +19,12 @@ const createTask = async (VALUES) => {
 VALUES)
 return data.rows;
 }
-
-module.exports = { createTask, findById, findAll }
+async function deleteTaskById(id) {
+  const date = await postresConnect(`DELETE FROM tasks WHERE taskid =${id}`)
+  console.log("The task deleting");
+  return date.rowCount;
+}
+module.exports = {deleteTaskById, createTask, findById, findAll }
 
 
 
