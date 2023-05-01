@@ -1,6 +1,6 @@
 const postresConnect = require('../DB/PostresConnect')
 
-// const table = tasksName;
+const table1 = "tasksName";
 
 async function findAll() {
   const data = await postresConnect('SELECT * FROM tasks')
