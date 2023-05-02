@@ -1,5 +1,5 @@
 let { Router } = require('express')
-let  {deleteTask,addTask, getAll, getByID } = require('../BL/taskBL')
+let  {editeTask,deleteTask,addTask, getAll, getByID } = require('../BL/taskBL')
 
 
 let router = Router()
@@ -8,16 +8,22 @@ router.get('/getAllTask', async (req, res) => {
   res.status(200).json( await getAll())
 })
 
-router.post('/getTaskById', async (req, res) => {
-  res.status(200).json(await getByID(req.body.id))
+
+router.get('/:id', async (req, res) => {
+  console.log("req.params.id" , req.params.id );
+  res.status(200).json(await getByID(req.params.id))
 })
+
 
 router.post('/createTask', async (req, res) => {
   res.status(200).json(await addTask(req.body))
 })
 
-router.post('/deleteTask', async (req, res) => {
+router.delete('/deleteTask', async (req, res) => {
   res.status(200).json(await deleteTask(req.body.id))
+})
+router.patch('/editeTask', async (req, res) => {
+  res.status(200).json(await editeTask(req.body))
 })
 
 

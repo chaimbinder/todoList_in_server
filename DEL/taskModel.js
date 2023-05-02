@@ -2,6 +2,7 @@ const postresConnect = require('../DB/PostresConnect')
 
 const table1 = "tasksName";
 
+
 async function findAll() {
   const data = await postresConnect('SELECT * FROM tasks')
   console.log(data);
@@ -9,7 +10,8 @@ async function findAll() {
 }
 
 async function findById(id) {
-  const data = await postresConnect(`SELECT * FROM tasks WHERE id =${id}`)
+console.log(id);
+  const data = await postresConnect(`SELECT * FROM tasks WHERE taskid =${id}`)
   return data.rows[0]
 }
 
@@ -19,12 +21,20 @@ const createTask = async (VALUES) => {
 VALUES)
 return data.rows;
 }
+
 async function deleteTaskById(id) {
   const date = await postresConnect(`DELETE FROM tasks WHERE taskid =${id}`)
   console.log("The task deleting");
   return date.rowCount;
 }
-module.exports = {deleteTaskById, createTask, findById, findAll }
+// UPDATE users SET name = 'John Doe' WHERE id = 1;
+async function editeTaskById(column,data,id) {
+  const date = await postresConnect(`UPDATE tasks SET ${column} = '${data}' WHERE taskid = ${id}`)
+  console.log("The task edited");
+  return date.rowCount;
+}
+
+module.exports = {editeTaskById, deleteTaskById, createTask, findById, findAll }
 
 
 
