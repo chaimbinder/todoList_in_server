@@ -1,8 +1,8 @@
 let { Client } = require('pg')
-let CheckingIsDatabase = require('../../func/CheckingIsDatabase')
-let CreatingADatabase = require('../../func/CreatingADatabase')
-let CreateNewTable = require('../../func/CreateNewTable')
-let CheckingTableExists = require('../../func/CheckingTableExists')
+let CheckingIsDatabase = require('../../funcSql/CheckingIsDatabase')
+let CreatingADatabase = require('../../funcSql/CreatingADatabase')
+let CreateNewTable = require('../../funcSql/CreateNewTable')
+let CheckingTableExists = require('../../funcSql/CheckingTableExists')
 
 async function CheckIfDBExists() {
   const There_is_such_a_database = await CheckingIsDatabase()
@@ -16,6 +16,7 @@ async function CheckIfDBExists() {
       CreateNewTable()
     }
   }
+
 
 }
 CheckIfDBExists()
