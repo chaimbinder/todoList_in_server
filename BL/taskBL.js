@@ -12,7 +12,6 @@ async function addTask(temp) {
   return await createTask(temp);
 }
 
-
 function deleteTask(id) {
   return deleteTaskById(id)
 }
