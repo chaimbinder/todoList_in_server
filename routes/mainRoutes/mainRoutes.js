@@ -1,4 +1,3 @@
-// let taskRoutesql = require('../mainRoutes/taskRouteSql')
 let taskRoutes = require('../mainRoutes/taskRouteSequelize')
 
 
@@ -14,7 +13,6 @@ function mainRoutes(app) {
 
   
   app.use('/task', taskRoutes)
-  // app.use('/taskSql', taskRoutesql)
   app.use('*', (req, res) => res.status(404).res.send('error in Path'))
 }
 
