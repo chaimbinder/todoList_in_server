@@ -50,8 +50,15 @@ Task.sync()
   });
   
   
+
 function findAll() {
-  return Task.findAll();;
+  const results = Task.findAll({
+    order: [
+      ['active', 'DESC'],
+      ['priority_level', 'ASC']
+    ]
+  });
+  return results;
 }
 
 function findById(id) {
@@ -69,15 +76,5 @@ function deleteTaskById(id) {
 function editeTaskById(data, id) {
   return Task.update(data,{ where: { taskid: id } } );;
 }
-
-
-(async () => {
-  try {
-    await sequelize.authenticate();
-    console.log("Connection has been established successfully.");
-  } catch (error) {
-    console.error("Unable to connect to the database:", error);
-  }
-})();
 
 module.exports = { editeTaskById, deleteTaskById, createTask, findById, findAll };

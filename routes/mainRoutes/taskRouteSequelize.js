@@ -32,25 +32,14 @@ router.post('/', async (req, res) => {
 
 router.patch('/', async (req, res) => {
   try {
-    res.status(200).send(await editeTask(req.body))
+    await editeTask(req.body)
+    let dataSort = await getAll()
+    res.status(200).send(dataSort)
   } catch (error) {
     console.log("error",error);
     res.status(400).send( error )
   }
 })
-
-
-// router.delete('/', async (req, res) => {
-//   try {
-//     let data = 
-//     console.log("data === ",data);
-//     res.status(200).send(data)
-//   } catch (error) {
-//     console.log("dfsadfsdfdsfdsfsdfsdfdsfsdfsdf", error);
-//     res.status(400).send( error )
-//   }
-// })
-
 
 router.delete("/", async (req, res)=>{
   try {
