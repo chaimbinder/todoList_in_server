@@ -11,7 +11,7 @@ function mainRoutes(app) {
     next()
   })
 
-  
+
   app.use('/task', taskRoutes)
   app.use('*', (req, res) => res.status(404).res.send('error in Path'))
 }
